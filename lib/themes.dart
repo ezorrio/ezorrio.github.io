@@ -23,7 +23,7 @@ class Themes {
         ),
         // textTheme: GoogleFonts.montserratTextTheme(ThemeData.light().textTheme),
       ).copyWith(
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           // color: Colors.grey.shade50,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
           elevation: 0,
@@ -41,7 +41,7 @@ class Themes {
         ),
         // textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
       ).copyWith(
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           color: Colors.grey.shade900,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
         ),

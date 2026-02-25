@@ -28,7 +28,6 @@ linter:
     avoid_field_initializers_in_const_classes: true
     avoid_final_parameters: true
     avoid_init_to_null: true
-    avoid_null_checks_in_equality_operators: true
     avoid_positional_boolean_parameters: true
     avoid_relative_lib_imports: true
     avoid_renaming_method_parameters: true
@@ -85,7 +84,6 @@ linter:
     unnecessary_parenthesis: false
     unnecessary_to_list_in_spreads: true
     use_enums: true
-    use_if_null_to_convert_nulls_to_bools: true
     use_named_constants: true
     use_rethrow_when_possible: true
     use_setters_to_change_properties: true
