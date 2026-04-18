@@ -1,93 +1,56 @@
-import 'package:ezorrio_dev/extensions.dart';
-import 'package:ezorrio_dev/model/app_place.dart';
-import 'package:ezorrio_dev/places.dart';
-import 'package:ezorrio_dev/ui/page/projects_page.dart';
-import 'package:ezorrio_dev/ui/page/work_page.dart';
+import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/dom.dart';
+import 'package:jaspr_router/jaspr_router.dart';
+import 'package:ezorrio_dev/resource/data_repository.dart';
 import 'package:ezorrio_dev/ui/widget/profile_header.dart';
-import 'package:ezorrio_dev/utils/app_utils.dart';
-import 'package:flutter/material.dart';
+// import 'dart:html' as html; // We can use web.window.location.pathname if needed
+import 'package:web/web.dart' as web;
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+class MainPage extends StatefulComponent {
+  final DataRepository data;
+  final VoidCallback toggleTheme;
+  final Component child;
+
+  const MainPage({
+    required this.data,
+    required this.toggleTheme,
+    required this.child,
+    super.key,
+  });
 
   @override
-  State<StatefulWidget> createState() => MainPageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class MainPageState extends State<MainPage> with TickerProviderStateMixin {
-  late TabController tabController;
+class _MainPageState extends State<MainPage> {
 
-  final Map<AppPlace, Widget> pages = {
-    Places.work: const WorkPage(),
-    Places.projects: const ProjectsPage(),
-    // if (kDebugMode) AppPlaces.schedule: const SchedulePage(),
-  };
-
-  @override
-  void initState() {
-    super.initState();
-    tabController = TabController(length: pages.length, vsync: this);
+  bool _isPath(String path) {
+    try {
+      return web.window.location.pathname == path;
+    } catch (_) {
+      return false;
+    }
   }
 
-  Widget bar() => Row(
-        mainAxisSize: MainAxisSize.min,
-        children: pages.keys
-            .map((e) => Column(
-                  children: [
-                    TextButton(
-                      onPressed: () => setState(() {
-                        tabController.animateTo(
-                          pages.keys.toList().indexOf(e),
-                          duration: const Duration(milliseconds: 300),
-                        );
-                      }),
-                      // icon: Icon(e.icon),
-                      child: Text(e.title),
-                    ),
-                    if (e == pages.keys.elementAt(tabController.index))
-                      Container(
-                        height: 2,
-                        width: 50,
-                        color: context.primaryColor,
-                      ),
-                  ],
-                ))
-            .toList(growable: false),
-      );
-
-  Widget body() => DefaultTabController(
-        initialIndex: 0,
-        length: pages.length,
-        // animationDuration: Duration.zero,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            bar(),
-            Expanded(child: pages.values.elementAt(tabController.index)),
-          ],
-        ),
-      );
-
-  Widget mobileLayout() => body();
-
-  Widget desktopLayout() => Row(
-        children: [
-          const Spacer(),
-          Expanded(
-            flex: 3,
-            child: body(),
-          ),
-          const Spacer(),
-        ],
-      );
-
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(120),
-          child: ProfileHeader(),
-        ),
-        body: AppUtils.isCompact(context: context) ? mobileLayout() : desktopLayout(),
-      );
+  Component build(BuildContext context) {
+    final isWork = _isPath('/');
+    final isProj = _isPath('/projects');
+    final isEducation = _isPath('/education');
+
+    return div(classes: 'page-wrapper', [
+      ProfileHeader(
+        data: component.data,
+        toggleTheme: component.toggleTheme,
+      ),
+      div(classes: 'tabs', [
+        Link(to: '/', classes: 'tab ${isWork ? "active" : ""}', child: const Component.text('Work')),
+        Link(to: '/projects', classes: 'tab ${isProj ? "active" : ""}', child: const Component.text('Projects')),
+        Link(to: '/education', classes: 'tab ${isEducation ? "active" : ""}', child: const Component.text('Education')),
+      ]),
+      div(classes: 'router-content', [
+        component.child
+      ]),
+    ]);
+  }
 }

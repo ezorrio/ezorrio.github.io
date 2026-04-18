@@ -1,0 +1,182 @@
+import 'package:jaspr/dom.dart';
+
+@css
+final List<StyleRule> appStyles = [
+  const StyleRule.import('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap'),
+  css(':root').styles(raw: const {
+    '--primary-color': '#212121',
+    '--bg-color': '#fafafa',
+    '--card-bg': '#ffffff',
+    '--text-main': '#212121',
+    '--text-secondary': '#757575',
+    '--divider-color': '#eeeeee',
+    '--spacing-sm': '8px',
+    '--spacing-md': '16px',
+    '--spacing-lg': '24px',
+  }),
+  css('[data-theme="dark"]').styles(raw: const {
+    '--primary-color': '#ffffff',
+    '--bg-color': '#121212',
+    '--card-bg': '#1e1e1e',
+    '--text-main': '#ffffff',
+    '--text-secondary': '#b0b0b0',
+    '--divider-color': '#333333',
+  }),
+  css('body').styles(raw: const {
+    'background-color': 'var(--bg-color)',
+    'color': 'var(--text-main)',
+    'font-family': "'Montserrat', sans-serif",
+    'margin': '0',
+    'padding': '0',
+    'transition': 'background-color 0.3s, color 0.3s',
+  }),
+  css('a').styles(raw: const {
+    'color': 'var(--primary-color)',
+    'text-decoration': 'none',
+  }),
+  css('a:hover').styles(raw: const {
+    'text-decoration': 'underline',
+  }),
+  css('.main-layout').styles(raw: const {
+    'max-width': '800px',
+    'margin': '0 auto',
+    'padding': 'var(--spacing-lg) var(--spacing-md)',
+  }),
+  css('.card').styles(raw: const {
+    'background-color': 'var(--card-bg)',
+    'border-radius': '24px',
+    'padding': 'var(--spacing-lg)',
+    'margin-bottom': 'var(--spacing-md)',
+    'box-shadow': '0 4px 6px rgba(0,0,0,0.05)',
+    'transition': 'background-color 0.3s, box-shadow 0.3s',
+  }),
+  css('.profile-header').styles(raw: const {
+    'text-align': 'center',
+    'position': 'relative',
+    'margin-bottom': '40px',
+  }),
+  css('.theme-toggle').styles(raw: const {
+    'position': 'absolute',
+    'top': '0',
+    'right': '0',
+    'background': 'none',
+    'border': 'none',
+    'color': 'var(--primary-color)',
+    'cursor': 'pointer',
+    'font-size': '1.2rem',
+    'padding': 'var(--spacing-md)',
+  }),
+  css('.social-links').styles(raw: const {
+    'display': 'flex',
+    'justify-content': 'center',
+    'gap': 'var(--spacing-md)',
+    'flex-wrap': 'wrap',
+    'margin-top': 'var(--spacing-md)',
+  }),
+  css('.social-btn').styles(raw: const {
+    'display': 'flex',
+    'align-items': 'center',
+    'gap': '8px',
+    'padding': '8px 16px',
+    'border-radius': '20px',
+    'background': 'transparent',
+    'color': 'var(--primary-color)',
+    'border': '1px solid var(--divider-color)',
+    'cursor': 'pointer',
+    'transition': 'all 0.2s',
+    'font-family': 'inherit',
+    'font-size': '0.9rem',
+    'text-decoration': 'none',
+  }),
+  css('.social-btn:hover').styles(raw: const {
+    'background': 'rgba(128, 128, 128, 0.1)',
+    'text-decoration': 'none',
+  }),
+  css('.tabs').styles(raw: const {
+    'display': 'flex',
+    'justify-content': 'center',
+    'gap': 'var(--spacing-lg)',
+    'margin-bottom': 'var(--spacing-lg)',
+    'border-bottom': '1px solid var(--divider-color)',
+  }),
+  css('.tab').styles(raw: const {
+    'padding': 'var(--spacing-md)',
+    'cursor': 'pointer',
+    'font-weight': 'bold',
+    'color': 'var(--text-secondary)',
+    'border-bottom': '2px solid transparent',
+    'transition': 'all 0.2s',
+    'background': 'none',
+    'border-top': 'none',
+    'border-left': 'none',
+    'border-right': 'none',
+    'font-family': 'inherit',
+    'font-size': '1rem',
+  }),
+  css('.tab.active').styles(raw: const {
+    'color': 'var(--primary-color)',
+    'border-bottom-color': 'var(--primary-color)',
+  }),
+  css('.divider').styles(raw: const {
+    'height': '1px',
+    'background-color': 'var(--divider-color)',
+    'margin': 'var(--spacing-md) 0',
+  }),
+  css('.text-caption').styles(raw: const {
+    'font-size': '0.85rem',
+    'color': 'var(--text-secondary)',
+  }),
+  css('.text-title').styles(raw: const {
+    'font-size': '1.25rem',
+    'font-weight': 'bold',
+    'margin': '0 0 var(--spacing-sm) 0',
+  }),
+  css('.text-body').styles(raw: const {
+    'font-size': '1rem',
+    'line-height': '1.5',
+    'margin': '0',
+    'white-space': 'pre-wrap',
+  }),
+  css('.text-center').styles(raw: const {
+    'text-align': 'center',
+  }),
+  css('.mb-sm').styles(raw: const {
+    'margin-bottom': 'var(--spacing-sm)',
+  }),
+  css('.mb-md').styles(raw: const {
+    'margin-bottom': 'var(--spacing-md)',
+  }),
+  css('.tags').styles(raw: const {
+    'display': 'flex',
+    'flex-wrap': 'wrap',
+    'gap': 'var(--spacing-sm)',
+    'margin-top': 'var(--spacing-sm)',
+  }),
+  css('.tag').styles(raw: const {
+    'background-color': 'var(--divider-color)',
+    'color': 'var(--text-secondary)',
+    'padding': '4px 10px',
+    'border-radius': '12px',
+    'font-size': '0.8rem',
+    'font-weight': '500',
+  }),
+  css.media(const MediaQuery.screen(maxWidth: Unit.pixels(600)), [
+    css('.main-layout').styles(raw: const {
+      'padding': 'var(--spacing-md) var(--spacing-sm)',
+    }),
+    css('.tabs').styles(raw: const {
+      'gap': 'var(--spacing-sm)',
+    }),
+    css('.tab').styles(raw: const {
+      'padding': 'var(--spacing-sm)',
+      'font-size': '0.9rem',
+    }),
+    css('.card').styles(raw: const {
+      'padding': 'var(--spacing-md)',
+    }),
+    css('.social-btn').styles(raw: const {
+      'padding': '6px 12px',
+      'font-size': '0.85rem',
+    }),
+  ]),
+];

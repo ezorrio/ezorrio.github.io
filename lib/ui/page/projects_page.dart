@@ -1,52 +1,35 @@
-import 'package:ezorrio_dev/extensions.dart';
+import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/dom.dart';
 import 'package:ezorrio_dev/model/project.dart';
 import 'package:ezorrio_dev/resource/data_repository.dart';
-import 'package:ezorrio_dev/ui/widget/app_card.dart';
-import 'package:ezorrio_dev/utils/app_utils.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ProjectsPage extends StatelessWidget {
-  static const routeName = '/projects';
+class ProjectsPage extends StatelessComponent {
+  final DataRepository data;
 
-  const ProjectsPage({super.key});
+  const ProjectsPage({required this.data, super.key});
 
-  static ProjectsPage instance() => const ProjectsPage();
-
-  Widget projectItem(BuildContext context, Project project) => AppCard(
-        title: project.title,
-        link: project.link,
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              '${AppUtils.formatTime(project.start)} - ${AppUtils.formatTime(project.end)}',
-              style: context.textStyleCaption,
-            ),
-            const SizedBox(height: 12),
-            Text(
-              project.description,
-              style: context.textStyleBody1,
-            ),
-            const SizedBox(height: 12),
-            // Wrap(children: [
-            //   ...project.tags.map(
-            //     (e) => Padding(
-            //       padding: const EdgeInsets.all(2.0),
-            //       child: Chip(label: Text(e, style: context.textStyleCaption)),
-            //     ),
-            //   )
-            // ]),
-          ],
-        ),
-      );
+  Component _projectItem(Project project) {
+    final startForm = project.start?.year.toString();
+    final endForm = project.end?.year.toString();
+    return div(classes: 'card', [
+      h3(classes: 'text-title', [
+        project.link != null ? a(href: project.link!, attributes: const {'target': '_blank'}, [Component.text(project.title)]) : Component.text(project.title)
+      ]),
+      p(classes: 'text-caption mb-sm', [Component.text('$startForm - $endForm')]),
+      p(classes: 'text-body', [Component.text(project.description)]),
+      if (project.tags.isNotEmpty)
+        div(classes: 'tags', [
+          for (final tag in project.tags)
+            span(classes: 'tag', [Component.text(tag)]),
+        ]),
+    ]);
+  }
 
   @override
-  Widget build(BuildContext context) => ListView.separated(
-        shrinkWrap: true,
-        itemBuilder: (_, index) => projectItem(context, RepositoryProvider.of<DataRepository>(context).projects[index]),
-        itemCount: RepositoryProvider.of<DataRepository>(context).projects.length,
-        separatorBuilder: (_, __) => const Divider(),
-      );
+  Component build(BuildContext context) {
+    return div(classes: 'projects-list', [
+      for (final project in data.projects) 
+        _projectItem(project),
+    ]);
+  }
 }
