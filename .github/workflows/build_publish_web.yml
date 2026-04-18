@@ -22,8 +22,9 @@ jobs:
       - uses: dart-lang/setup-dart@v1
         with:
           sdk: 'stable'
+      - run: dart pub global activate jaspr_cli
       - run: dart pub get
-      - run: dart run jaspr_cli build
+      - run: jaspr build
       - run: echo ezorr.io > build/jaspr/CNAME
       - name: Setup Pages
         uses: actions/configure-pages@v4
