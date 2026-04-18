@@ -1,11 +1,18 @@
-import 'package:ezorrio_dev/bloc/appearance/appearance_state.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:ezorrio_dev/model/app_theme.dart';
+import 'package:web/web.dart';
 
 class SettingsRepository {
-  Future<SharedPreferences> preferences = SharedPreferences.getInstance();
+  Future<bool> storeThemePreference({required AppTheme theme}) async {
+    window.localStorage.setItem('theme', theme.index.toString());
+    return true;
+  }
 
-  Future<bool> storeThemePreference({required AppTheme theme}) async =>
-      (await preferences).setInt('theme', theme.index);
-
-  Future<AppTheme> getTheme() async => AppTheme.fromValue((await preferences).getInt('theme'));
+  Future<AppTheme> getTheme() async {
+    final val = window.localStorage.getItem('theme');
+    if (val != null) {
+      return AppTheme.fromValue(int.tryParse(val) ?? 0);
+    }
+    return AppTheme.system;
+  }
 }
+

@@ -1,32 +1,44 @@
-name: Flutter Web
+name: Jaspr Web
 on:
   push:
     branches:
       - master
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     name: Build Web
-    env:
-      my_secret: ${{secrets.commit_secret}}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # pin@v2
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
         with:
-          flutter-version-file: pubspec.yaml
-          cache: true
-          architecture: x64
-      - run: flutter pub get
-      - run: flutter build web --wasm --release
-      - run: |
-          cd build/web
-          git init
-          git config --global user.email ezorrio@gmail.com
-          git config --global user.name Emin Guliev
-          git status
-          git remote add origin https://${{secrets.commit_secret}}@github.com/ezorrio/ezorrio.github.io.git
-          git checkout -b master
-          echo ezorr.io > CNAME
-          git add --all
-          git commit -m "Update Build"
-          git push origin master -f
+          sdk: 'stable'
+      - run: dart pub get
+      - run: dart run jaspr_cli build
+      - run: echo ezorr.io > build/jaspr/CNAME
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './build/jaspr'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

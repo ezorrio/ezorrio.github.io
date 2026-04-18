@@ -1,73 +1,46 @@
-import 'package:ezorrio_dev/extensions.dart';
-import 'package:ezorrio_dev/model/project.dart';
+import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/dom.dart';
 import 'package:ezorrio_dev/model/work.dart';
+import 'package:ezorrio_dev/model/project.dart';
 import 'package:ezorrio_dev/resource/data_repository.dart';
-import 'package:ezorrio_dev/ui/widget/app_card.dart';
-import 'package:ezorrio_dev/utils/app_utils.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-class WorkPage extends StatelessWidget {
-  static const routeName = '/work';
+class WorkPage extends StatelessComponent {
+  final DataRepository data;
 
-  const WorkPage({super.key});
+  const WorkPage({required this.data, super.key});
 
-  static WorkPage instance() => const WorkPage();
+  Component _projectItem(Project project) {
+    return div(classes: 'mb-sm', [
+      p(classes: 'text-title', [Component.text(project.title)]),
+      p(classes: 'text-body', [Component.text(project.description)]),
+      if (project.tags.isNotEmpty)
+        div(classes: 'tags', [
+          for (final tag in project.tags)
+            span(classes: 'tag', [Component.text(tag)]),
+        ]),
+    ]);
+  }
 
-  Widget projectItem(BuildContext context, Project project) => Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            project.title,
-            style: context.textStyleBody1.copyWith(fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            project.description,
-            style: context.textStyleBody1,
-          ),
-          // const SizedBox(height: 12),
-          // Wrap(
-          //   children: project.tags
-          //       .map(
-          //         (e) => Padding(
-          //           padding: const EdgeInsets.all(2.0),
-          //           child: Chip(label: Text(e, style: context.textStyleCaption)),
-          //         ),
-          //       )
-          //       .toList(),
-          // ),
-        ],
-      );
-
-  Widget workItem(BuildContext context, Work work) => AppCard(
-        title: work.company,
-        link: work.link,
-        content: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(work.position),
-            Text(
-              '${AppUtils.formatTime(work.start)} - ${AppUtils.formatTime(work.end)}',
-              style: context.textStyleCaption,
-            ),
-            ...work.projects.map(
-              (item) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12.0),
-                child: projectItem(context, item),
-              ),
-            ),
-          ],
-        ),
-      );
+  Component _workItem(Work work) {
+    final startForm = '${work.start?.month.toString().padLeft(2, '0')}/${work.start?.year}';
+    final isPres = work.end == null || (work.end!.year == DateTime.now().year && work.end!.month == DateTime.now().month);
+    final endForm = isPres ? 'Present' : '${work.end!.month.toString().padLeft(2, '0')}/${work.end!.year}';
+    
+    return div(classes: 'card', [
+      h3(classes: 'text-title', [
+        work.link != null ? a(href: work.link!, attributes: const {'target': '_blank'}, [Component.text(work.company)]) : Component.text(work.company)
+      ]),
+      p(classes: 'text-main mb-sm', [Component.text(work.position)]),
+      p(classes: 'text-caption mb-md', [Component.text('$startForm - $endForm')]),
+      ...work.projects.map(_projectItem),
+    ]);
+  }
 
   @override
-  Widget build(BuildContext context) => ListView.separated(
-        shrinkWrap: true,
-        itemBuilder: (_, index) => workItem(context, RepositoryProvider.of<DataRepository>(context).works[index]),
-        itemCount: RepositoryProvider.of<DataRepository>(context).works.length,
-        separatorBuilder: (BuildContext context, int index) => const Divider(),
-      );
+  Component build(BuildContext context) {
+    return div(classes: 'work-list', [
+      for (final work in data.works)
+        _workItem(work),
+    ]);
+  }
 }
