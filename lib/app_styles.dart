@@ -191,7 +191,6 @@ final List<StyleRule> appStyles = [
     'color': 'var(--text-tertiary)',
     'margin-bottom': '4px',
     'font-family': "'JetBrains Mono', 'Fira Code', monospace",
-    'font-style': 'italic',
   }),
 
   css('.profile-location').styles(raw: const {
