@@ -1,19 +1,45 @@
 name: Emin Guliev
 photo: https://avatars.githubusercontent.com/u/4018146?s=400&u=474410b93a2c77f660919a1dc9a5655a319e3661&v=4
-birth: 1998-01-03
 nickname: ezorrio
 location: Oslo, Norway
-bio: "Code 💻... Sleep 😴... Repeat 🔁"
-studyPlace: University of Vienna
-studyField: MSc Data Science
-jobPlace: Coop Norge
-jobTitle: Senior Mobile Application Developer
+bio: "Staff Software Engineer with BSc in Applied Mathematics and Computer Science. 9+ years experience in building large scale mobile applications using different technologies - Flutter (iOS, Android, Web & desktop), Android Native (Kotlin, Java)."
+jobPlace: Coop Norge SA
+jobTitle: Lead for Mobile App Development
 
 networkLinks:
-  email: mailto:me@ezorr.io
-  linkedin: https://linkedin.com/ezorrio
-  telegram: https://t.me/ezorrio
+  email: mailto:ezorrio@gmail.com
+  linkedin: https://linkedin.com/in/ezorrio
   github: https://github.com/ezorrio
-  instagram: https://instagram.com/ezorrio
-  twitter: https://twitter.com/ezorrio
+  telegram: https://t.me/ezorrio
 
+skills:
+  - Flutter
+  - Dart
+  - Android SDK
+  - Java
+  - Kotlin
+  - Firebase
+  - Analytics
+  - Swift
+  - Python
+  - Git
+  - GitHub Actions
+  - GitLab pipelines
+  - Continuous Integration
+  - Continuous Delivery
+  - REST
+  - RPC
+  - Team Management
+  - Mobile applications
+  - Software Development
+  - Software Architecture
+  - Open source
+  - Design System
+
+languages:
+  - language: English
+    level: Advanced
+  - language: Azerbaijani
+    level: Professional
+  - language: Turkish
+    level: Professional

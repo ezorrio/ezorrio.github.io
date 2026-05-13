@@ -1,17 +1,19 @@
-import 'package:ezorrio_dev/model/project.dart';
-
 class Work {
   String company;
   String position;
+  String? location;
   String? link;
   String? period;
-  List<Project> projects;
+  String? description;
+  List<String> tags;
 
   Work({
     required this.company,
-    required this.projects,
     required this.position,
+    required this.tags,
+    this.location,
     this.link,
     this.period,
+    this.description,
   });
 }

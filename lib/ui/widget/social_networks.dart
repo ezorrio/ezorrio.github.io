@@ -22,9 +22,10 @@ class SocialNetworks extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     return div(classes: 'social-links', [
-      _socialBtn('fas fa-envelope', 'Email me', links.email),
-      _socialBtn('fab fa-github', 'GitHub', links.github),
-      _socialBtn('fab fa-linkedin', 'LinkedIn', links.linkedin),
+      if (links.email != null) _socialBtn('fas fa-envelope', 'Email', links.email!),
+      if (links.github != null) _socialBtn('fab fa-github', 'GitHub', links.github!),
+      if (links.linkedin != null) _socialBtn('fab fa-linkedin', 'LinkedIn', links.linkedin!),
+      if (links.telegram != null) _socialBtn('fab fa-telegram', 'Telegram', links.telegram!),
     ]);
   }
 }

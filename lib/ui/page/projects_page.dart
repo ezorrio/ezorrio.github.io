@@ -11,15 +11,18 @@ class ProjectsPage extends StatelessComponent {
   Component _projectItem(Project project) {
     return div(classes: 'card', [
       h3(classes: 'text-title', [
-        project.link != null ? a(href: project.link!, attributes: const {'target': '_blank'}, [Component.text(project.title)]) : Component.text(project.title)
+        project.link != null
+            ? a(href: project.link!, attributes: const {'target': '_blank'}, [Component.text(project.title)])
+            : Component.text(project.title),
       ]),
+      if (project.role != null)
+        p(classes: 'text-main mb-sm', [Component.text(project.role!)]),
       if (project.period != null)
-        p(classes: 'text-caption mb-sm', [Component.text(project.period!)]),
-      p(classes: 'text-body', [Component.text(project.description)]),
+        p(classes: 'text-caption mb-md', [Component.text(project.period!)]),
+      p(classes: 'text-body mb-sm', [Component.text(project.description)]),
       if (project.tags.isNotEmpty)
         div(classes: 'tags', [
-          for (final tag in project.tags)
-            span(classes: 'tag', [Component.text(tag)]),
+          for (final tag in project.tags) span(classes: 'tag', [Component.text(tag)]),
         ]),
     ]);
   }
@@ -27,8 +30,7 @@ class ProjectsPage extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     return div(classes: 'projects-list', [
-      for (final project in data.projects) 
-        _projectItem(project),
+      for (final project in data.projects) _projectItem(project),
     ]);
   }
 }

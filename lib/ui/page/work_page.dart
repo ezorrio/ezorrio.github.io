@@ -1,7 +1,6 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 import 'package:ezorrio_dev/model/work.dart';
-import 'package:ezorrio_dev/model/project.dart';
 import 'package:ezorrio_dev/resource/data_repository.dart';
 
 class WorkPage extends StatelessComponent {
@@ -9,35 +8,31 @@ class WorkPage extends StatelessComponent {
 
   const WorkPage({required this.data, super.key});
 
-  Component _projectItem(Project project) {
-    return div(classes: 'mb-sm', [
-      p(classes: 'text-title', [Component.text(project.title)]),
-      p(classes: 'text-body', [Component.text(project.description)]),
-      if (project.tags.isNotEmpty)
-        div(classes: 'tags', [
-          for (final tag in project.tags)
-            span(classes: 'tag', [Component.text(tag)]),
-        ]),
-    ]);
-  }
-
   Component _workItem(Work work) {
     return div(classes: 'card', [
       h3(classes: 'text-title', [
-        work.link != null ? a(href: work.link!, attributes: const {'target': '_blank'}, [Component.text(work.company)]) : Component.text(work.company)
+        work.link != null
+            ? a(href: work.link!, attributes: const {'target': '_blank'}, [Component.text(work.company)])
+            : Component.text(work.company),
       ]),
       p(classes: 'text-main mb-sm', [Component.text(work.position)]),
+      if (work.location != null)
+        p(classes: 'text-caption', [Component.text(work.location!)]),
       if (work.period != null)
         p(classes: 'text-caption mb-md', [Component.text(work.period!)]),
-      ...work.projects.map(_projectItem),
+      if (work.description != null)
+        p(classes: 'text-body mb-sm', [Component.text(work.description!)]),
+      if (work.tags.isNotEmpty)
+        div(classes: 'tags', [
+          for (final tag in work.tags) span(classes: 'tag', [Component.text(tag)]),
+        ]),
     ]);
   }
 
   @override
   Component build(BuildContext context) {
     return div(classes: 'work-list', [
-      for (final work in data.works)
-        _workItem(work),
+      for (final work in data.works) _workItem(work),
     ]);
   }
 }

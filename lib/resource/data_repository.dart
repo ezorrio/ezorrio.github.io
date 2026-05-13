@@ -9,11 +9,11 @@ class DataRepository {
   final String nickname;
   final String location;
   final String bio;
-  final String studyPlace;
-  final String studyField;
   final String jobPlace;
   final String jobTitle;
   final SocialNetworkLinks networkLinks;
+  final List<String> skills;
+  final List<Language> languages;
 
   final List<Education> education;
   final List<Project> projects;
@@ -25,11 +25,11 @@ class DataRepository {
     required this.nickname,
     required this.location,
     required this.bio,
-    required this.studyPlace,
-    required this.studyField,
     required this.jobPlace,
     required this.jobTitle,
     required this.networkLinks,
+    required this.skills,
+    required this.languages,
     required this.education,
     required this.projects,
     required this.works,
@@ -40,6 +40,8 @@ class DataRepository {
   }) async {
     final profile = loadYaml(await readText('content/profile.yaml'));
     final social = profile['networkLinks'];
+    final rawSkills = profile['skills'] as YamlList?;
+    final rawLangs = profile['languages'] as YamlList?;
 
     return DataRepository._(
       name: profile['name'] as String,
@@ -47,18 +49,21 @@ class DataRepository {
       nickname: profile['nickname'] as String,
       location: profile['location'] as String,
       bio: profile['bio'] as String,
-      studyPlace: profile['studyPlace'] as String,
-      studyField: profile['studyField'] as String,
       jobPlace: profile['jobPlace'] as String,
       jobTitle: profile['jobTitle'] as String,
       networkLinks: SocialNetworkLinks(
-        email: social['email'] as String,
-        linkedin: social['linkedin'] as String,
-        telegram: social['telegram'] as String,
-        github: social['github'] as String,
-        instagram: social['instagram'] as String,
-        twitter: social['twitter'] as String,
+        email: social['email'] as String?,
+        linkedin: social['linkedin'] as String?,
+        github: social['github'] as String?,
+        telegram: social['telegram'] as String?,
       ),
+      skills: rawSkills?.map((e) => e.toString()).toList() ?? [],
+      languages: rawLangs?.map((item) {
+        return Language(
+          language: item['language'] as String,
+          level: item['level'] as String,
+        );
+      }).toList() ?? [],
       education: _parseEducationList(
         loadYaml(await readText('content/education.yaml')),
       ),
@@ -75,7 +80,8 @@ class DataRepository {
       return Education(
         place: item['place'] as String,
         occupation: item['occupation'] as String,
-        description: item['description'] as String?,
+        location: item['location'] as String?,
+        description: (item['description'] as String?)?.trim(),
         period: item['period'] as String?,
       );
     }).toList();
@@ -83,50 +89,53 @@ class DataRepository {
 
   static List<Project> _parseProjectList(dynamic yaml) {
     final list = yaml as YamlList;
-    return list.map(_parseProject).toList();
+    return list.map((item) {
+      final tags = item['tags'] as YamlList?;
+      return Project(
+        title: item['title'] as String,
+        description: (item['description'] as String).trim(),
+        role: item['role'] as String?,
+        link: item['link'] as String?,
+        tags: tags?.map((e) => e.toString()).toList() ?? [],
+        period: item['period'] as String?,
+      );
+    }).toList();
   }
 
   static List<Work> _parseWorkList(dynamic yaml) {
     final list = yaml as YamlList;
     return list.map((item) {
-      final rawProjects = item['projects'] as YamlList;
-
+      final tags = item['tags'] as YamlList?;
       return Work(
         company: item['company'] as String,
         position: item['position'] as String,
+        location: item['location'] as String?,
         link: item['link'] as String?,
         period: item['period'] as String?,
-        projects: rawProjects.map(_parseProject).toList(),
+        description: (item['description'] as String?)?.trim(),
+        tags: tags?.map((e) => e.toString()).toList() ?? [],
       );
     }).toList();
-  }
-
-  static Project _parseProject(dynamic item) {
-    final tags = item['tags'] as YamlList?;
-    return Project(
-      title: item['title'] as String,
-      description: (item['description'] as String).trim(),
-      link: item['link'] as String?,
-      tags: tags?.map((e) => e.toString()).toList() ?? [],
-      period: item['period'] as String?,
-    );
   }
 }
 
 class SocialNetworkLinks {
-  final String email;
-  final String linkedin;
-  final String telegram;
-  final String github;
-  final String instagram;
-  final String twitter;
+  final String? email;
+  final String? linkedin;
+  final String? github;
+  final String? telegram;
 
   const SocialNetworkLinks({
-    required this.email,
-    required this.linkedin,
-    required this.telegram,
-    required this.github,
-    required this.instagram,
-    required this.twitter,
+    this.email,
+    this.linkedin,
+    this.github,
+    this.telegram,
   });
+}
+
+class Language {
+  final String language;
+  final String level;
+
+  const Language({required this.language, required this.level});
 }

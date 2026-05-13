@@ -1,173 +1,71 @@
-- company: Coop Norge
+- company: Coop Norge SA
+  location: Oslo, Norway
   link: https://coop.no
-  position: Senior Mobile Application Developer
-  period: 12/2022 - Present
-  projects:
-    - title: Coop Member App
-      description: |
-        Responsibilities:
-        - Architecture of the new app, principles and guidelines
-        - Strategy for transitioning legacy code to new defined standards
-        - Implementation of business-critical functionalities
-        - New CI/CD, release management
-        - Identifying technical debt and strategy to solve that
-      tags:
-        - flutter
-        - dart
-        - android
-        - ios
+  position: Lead for Mobile App Development
+  period: December 2022 - Present
+  description: |
+    - Initiated and led the project of creating new Coop Medlem app with 1.6M+ Monthly Active Users (80% up since)
+    - Defined project architecture, coding standards, definitions of done, SLO's, review and delivery processes (resulted in faster delivery time, archived required 99.99% crash-free production users)
+    - Provided technical solutions to business-critical services and foundation of the app
+    - Mentored mobile developers in the team and organization wide, established Mobile Devs chapter across the organization
+    - Actively developed, tackling and solving important business cases (coded in Flutter, Dart, Swift, Kotlin, Github Actions, Ruby, Shell) - tested, reviewed and delivered solutions on time.
+    - Maintained production and actively addressed all severe technical issues
+    - Overhauled continuous integration (CI) and continuous delivery pipelines as a part of testing and delivery processes, resulting in 20+ rollouts per year per platform
+  tags:
+    - flutter
+    - dart
+    - swift
+    - kotlin
+    - github-actions
 
-- company: wheel.me
+- company: wheel.me AS
+  location: Oslo, Norway
   link: https://wheel.me
-  position: Lead Software Developer
-  period: 03/2020 - 12/2022
-  projects:
-    - title: wheel.me app
-      description: |
-        Developed a Cross-platform Real-time Flutter application for:
-        - Controlling wheels and groups of wheels
-        - Managing missions, zones, map data and other data
-        Running on Android, iOS, Linux, Windows, macOS and Web
+  position: Lead Mobile Developer
+  period: March 2020 - December 2022
+  description: |
+    - Created a mobile and desktop application for advanced robot control with high customer satisfaction rate
+    - Established application architecture, guidelines and delivery processes for different business environments
+    - Delivered safe and robust code (Flutter, Dart, GitLab pipelines, Shell), ensuring addressing all edge-cases, with a requirement of passing official safety certifications and penetration tests
+    - Participated in meetings with representatives of big companies as a part of leadership group, holding presentations and live demo sessions
+    - Managed a cross-functional team, ensuring personal growth, productivity and improving employee satisfaction of each member
+    - Assisted in clear definition of high-level OKRs and their further transformation into technical tasks
+    - Defined internal development processes and ceremonies to ensure timely delivery of objectives
+  tags:
+    - flutter
+    - dart
+    - robotics
+    - gitlab-pipelines
 
-        Working on:
-        - Application design
-        - Code, architecture, CI/CD
-        - AppStore/Google Play Distribution
-
-        Initially was working on the project alone, thus I've created the application, additionally was responsible for everything above-mentioned, including decision-making. Afterwards, as project grew, I've managed a team:
-        - Deadlines estimation
-        - Creation and distribution of tasks
-        - Interviewing new members
-        - Synchronization with other departments of the company
-      tags:
-        - flutter
-        - dart
-        - robotics
-        - platform-widgets
-        - protobuf
-        - grpc
-        - android
-        - ios
-        - macos
-        - windows
-        - linux
-        - web
-
-- company: UnmannedSystems Russia
-  link: https://unmannedsystems.ru
-  position: Lead Software Developer
-  period: 02/2018 - 11/2019
-  projects:
-    - title: Lockey App
-      description: |
-        application for device tracking:
-        - control devices such as drones, cars, mobile device and etc.
-        - ability to locate all of devices and view them on chosen map provider (Google/OSM/Yandex)
-        - push notification regarding some changes in device status
-        - custom secure-protocol implemented
-      tags:
-        - android
-        - rxjava
-        - mvp
-        - firebase
-        - google-maps
-        - yandex-maps
-        - openstreetmaps
-
-    - title: Drone Controller
-      description: |
-        application for DJI drones operation
-        - implemented most operations available via DJI SDK (drone flight modes, calibration, camera streaming & control, drone status view and much more)
-        - transmit videostream from drone-controller device to many others including data-servers
-      tags:
-        - android
-        - rxjava
-        - mvp
-        - dji-sdk
-        - google-maps
-        - yandex-maps
-        - openstreetmaps
-
-    - title: Lockey App for Desktop
-      description: application for device tracking (see above) - written in C#
-      tags:
-        - windows
-        - c#
-        - google-maps
-        - yandex-maps
-        - openstreetmaps
-
-    - title: VideoCollector for Desktop
-      description: |
-        application for viewing several real-time video streams at once (up to 8) with minimal latency. C# & VLC
-      tags:
-        - windows
-        - c#
-        - vlc
-
-    - title: VideoCollector for Desktop QT
-      description: |
-        QT based project proposed by me to develop a cross-platform app with the same features using ffmpeg to get more stable app.
-      tags:
-        - qt
-        - ffmpeg
-        - windows
-        - linux
-        - macos
-
-    - title: DVB-T restreamer (Embedded)
-      description: |
-        Raspberry Pi/Tinkerboard project aiming at producing a portable device to stream video-data from up to 4 cameras transmitted over DVB-T (different frequencies) to save them on local drives / remote servers.
-      tags:
-        - embedded
-        - raspberry-pi
-        - tinkerboard
-        - dvb-t
-        - ffmpeg
+- company: T-Smart
+  location: Moscow, Russia
+  position: Senior Software Engineer
+  period: February 2018 - February 2020
+  description: |
+    - Created an Android Native app for device tracking: drones & cars with extra security
+    - Created an Android Native app for controlling internally designed drones & companion hardware
+    - Participated in creating of a custom secure protocol for communication, ensuring privacy & safety
+    - Developed a software for embedded devices for video capturing and real-time processing
+    - Developed a desktop app using QT/C++ for security monitoring purposes
+  tags:
+    - android
+    - kotlin
+    - java
+    - qt
+    - c++
+    - embedded
 
 - company: i-EXP
+  location: Moscow, Russia
   link: https://i-exp.ru
   position: Android Developer
-  period: 09/2017 - 03/2018
-  projects:
-    - title: Maquette Controller
-      description: |
-        Application for controlling physical maquette of a location
-        - worked with UART and Bluetooth
-        - control each object on maquette (lights, elevator & etc)
-        - support different maquettes
-        - presentation mode, automatic execution of sequence of actions
-      tags:
-        - android
-        - rxjava
-        - uart
-        - bluetooth
-
-    - title: Videowall Controller
-      description: |
-        Application for controlling custom video display with unspecified amount of panels (3-9)
-        - multithread image output of images to display
-        - control data displayed on each panel
-        - ability to move data between panels
-        - presentation mode
-      tags:
-        - android
-        - rxjava
-        - exoplayer
-        - streaming
-
-    - title: Application for AR Streaming
-      description: |
-        - device location-data processing
-        - appending virtual objects to real video obtained from device
-        - occlusion task resolved - transmit video data in aRGB formal
-        - transformation of coordination system from ARCore into Unity
-        - obtained minimal possible streaming latency
-        Used libraries: Tango, ARCore and Vuforia SDK
-      tags:
-        - android
-        - tango
-        - augmented-reality
-        - virtual-reality
-        - streaming
-
+  period: September 2017 - February 2018
+  description: |
+    - Created an Android Augmented Reality app used for showcasing simulations around big construction areas
+    - Applied new-born and cutting-edge technology, using ARCore, Tango and Vuforia
+    - Assisted in creation of a flexible camera monitoring tool, supporting many different types of sources
+  tags:
+    - android
+    - arcore
+    - tango
+    - vuforia
