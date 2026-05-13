@@ -285,13 +285,12 @@ final List<StyleRule> appStyles = [
     'margin-bottom': '20px',
   }),
   css('.profile-section-title').styles(raw: const {
-    'font-size': '0.82rem',
+    'font-size': '0.72rem',
     'font-weight': '600',
-    'text-transform': 'lowercase',
-    'letter-spacing': '0.06em',
-    'color': 'var(--accent)',
+    'text-transform': 'uppercase',
+    'letter-spacing': '0.1em',
+    'color': 'var(--text-secondary)',
     'margin-bottom': '12px',
-    'font-family': "'JetBrains Mono', 'Fira Code', monospace",
   }),
   css('.skills-list').styles(raw: const {
     'display': 'flex',

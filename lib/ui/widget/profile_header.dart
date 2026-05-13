@@ -53,7 +53,7 @@ class ProfileHeader extends StatelessComponent {
       if (data.skills.isNotEmpty)
         div(classes: 'profile-section', [
           const p(classes: 'profile-section-title', [
-            Component.text('{ skills }'),
+            Component.text('Skills'),
           ]),
           div(classes: 'skills-list', [
             for (final skill in data.skills)
@@ -65,7 +65,7 @@ class ProfileHeader extends StatelessComponent {
       if (data.languages.isNotEmpty)
         div(classes: 'profile-section', [
           const p(classes: 'profile-section-title', [
-            Component.text('{ languages }'),
+            Component.text('Languages'),
           ]),
           div(classes: 'languages-list', [
             for (final lang in data.languages)
