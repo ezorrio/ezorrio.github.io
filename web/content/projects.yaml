@@ -1,0 +1,71 @@
+- title: Phoenix for VK
+  description: |
+    Alternative open-sourced VK Client for Android
+    Co-founder. Project written from scratch on Java.
+    Distributed on Google Play.
+    Total amount of users all-time of more than 250K.
+  link: https://github.com/PhoenixDevTeam/Phoenix-for-VK
+  tags:
+    - android
+    - java
+    - kotlin
+    - rxjava2
+    - vk
+    - material-design
+    - material-components
+    - encryption
+    - gson
+    - exoplayer
+    - firebase-database
+    - firebase-messaging
+    - androidx
+    - mvp
+  period: 2014 - 2019
+
+- title: Yandex Translate (non-official)
+  description: |
+    Alternative Yandex.Translate for Android
+    Open-source project to improve knowledge on bleeding-edge frameworks and patterns according to that time.
+  link: https://github.com/ezorrio/YandexTranslate
+  tags:
+    - android
+    - kotlin
+    - room
+    - yandex
+    - kotlin-extensions
+    - moshi
+    - material-components
+    - coroutines-android
+    - livedata
+    - androidx
+    - jetpack-android
+  period: "2018"
+
+- title: News classifier
+  description: |
+    Deep learning project which predicts news topic (predefined set, i.e. politics, sports and etc).
+    Focused on Russian text. As source for learning Lenta.ru articles were used
+  tags:
+    - python
+    - tensorflow
+    - glove
+    - fasttext
+    - word2vec
+    - cnn
+    - rcnn
+    - news
+    - russian
+    - nlp
+  period: "2018"
+
+- title: Music genre recognition
+  description: |
+    Machine learning project which predicts music genre based on features
+    Uses Local Sensitive Hashing (LSH). Used FMA as dataset for learning.
+  link: https://github.com/ezorrio/genre-classification
+  tags:
+    - python
+    - lsh
+    - fma
+    - music
+  period: "2021"

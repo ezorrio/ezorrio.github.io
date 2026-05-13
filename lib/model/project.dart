@@ -1,8 +1,7 @@
 class Project {
   String title;
   String description;
-  DateTime? start;
-  DateTime? end;
+  String? period;
   String? link;
   List<String> tags;
 
@@ -11,7 +10,6 @@ class Project {
     required this.description,
     required this.tags,
     this.link,
-    this.start,
-    this.end,
+    this.period,
   });
 }

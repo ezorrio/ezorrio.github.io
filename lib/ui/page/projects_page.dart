@@ -9,13 +9,12 @@ class ProjectsPage extends StatelessComponent {
   const ProjectsPage({required this.data, super.key});
 
   Component _projectItem(Project project) {
-    final startForm = project.start?.year.toString();
-    final endForm = project.end?.year.toString();
     return div(classes: 'card', [
       h3(classes: 'text-title', [
         project.link != null ? a(href: project.link!, attributes: const {'target': '_blank'}, [Component.text(project.title)]) : Component.text(project.title)
       ]),
-      p(classes: 'text-caption mb-sm', [Component.text('$startForm - $endForm')]),
+      if (project.period != null)
+        p(classes: 'text-caption mb-sm', [Component.text(project.period!)]),
       p(classes: 'text-body', [Component.text(project.description)]),
       if (project.tags.isNotEmpty)
         div(classes: 'tags', [

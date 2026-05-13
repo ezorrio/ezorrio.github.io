@@ -4,8 +4,7 @@ class Work {
   String company;
   String position;
   String? link;
-  DateTime? start;
-  DateTime? end;
+  String? period;
   List<Project> projects;
 
   Work({
@@ -13,7 +12,6 @@ class Work {
     required this.projects,
     required this.position,
     this.link,
-    this.start,
-    this.end,
+    this.period,
   });
 }

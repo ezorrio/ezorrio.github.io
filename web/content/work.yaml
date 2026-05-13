@@ -1,0 +1,173 @@
+- company: Coop Norge
+  link: https://coop.no
+  position: Senior Mobile Application Developer
+  period: 12/2022 - Present
+  projects:
+    - title: Coop Member App
+      description: |
+        Responsibilities:
+        - Architecture of the new app, principles and guidelines
+        - Strategy for transitioning legacy code to new defined standards
+        - Implementation of business-critical functionalities
+        - New CI/CD, release management
+        - Identifying technical debt and strategy to solve that
+      tags:
+        - flutter
+        - dart
+        - android
+        - ios
+
+- company: wheel.me
+  link: https://wheel.me
+  position: Lead Software Developer
+  period: 03/2020 - 12/2022
+  projects:
+    - title: wheel.me app
+      description: |
+        Developed a Cross-platform Real-time Flutter application for:
+        - Controlling wheels and groups of wheels
+        - Managing missions, zones, map data and other data
+        Running on Android, iOS, Linux, Windows, macOS and Web
+
+        Working on:
+        - Application design
+        - Code, architecture, CI/CD
+        - AppStore/Google Play Distribution
+
+        Initially was working on the project alone, thus I've created the application, additionally was responsible for everything above-mentioned, including decision-making. Afterwards, as project grew, I've managed a team:
+        - Deadlines estimation
+        - Creation and distribution of tasks
+        - Interviewing new members
+        - Synchronization with other departments of the company
+      tags:
+        - flutter
+        - dart
+        - robotics
+        - platform-widgets
+        - protobuf
+        - grpc
+        - android
+        - ios
+        - macos
+        - windows
+        - linux
+        - web
+
+- company: UnmannedSystems Russia
+  link: https://unmannedsystems.ru
+  position: Lead Software Developer
+  period: 02/2018 - 11/2019
+  projects:
+    - title: Lockey App
+      description: |
+        application for device tracking:
+        - control devices such as drones, cars, mobile device and etc.
+        - ability to locate all of devices and view them on chosen map provider (Google/OSM/Yandex)
+        - push notification regarding some changes in device status
+        - custom secure-protocol implemented
+      tags:
+        - android
+        - rxjava
+        - mvp
+        - firebase
+        - google-maps
+        - yandex-maps
+        - openstreetmaps
+
+    - title: Drone Controller
+      description: |
+        application for DJI drones operation
+        - implemented most operations available via DJI SDK (drone flight modes, calibration, camera streaming & control, drone status view and much more)
+        - transmit videostream from drone-controller device to many others including data-servers
+      tags:
+        - android
+        - rxjava
+        - mvp
+        - dji-sdk
+        - google-maps
+        - yandex-maps
+        - openstreetmaps
+
+    - title: Lockey App for Desktop
+      description: application for device tracking (see above) - written in C#
+      tags:
+        - windows
+        - c#
+        - google-maps
+        - yandex-maps
+        - openstreetmaps
+
+    - title: VideoCollector for Desktop
+      description: |
+        application for viewing several real-time video streams at once (up to 8) with minimal latency. C# & VLC
+      tags:
+        - windows
+        - c#
+        - vlc
+
+    - title: VideoCollector for Desktop QT
+      description: |
+        QT based project proposed by me to develop a cross-platform app with the same features using ffmpeg to get more stable app.
+      tags:
+        - qt
+        - ffmpeg
+        - windows
+        - linux
+        - macos
+
+    - title: DVB-T restreamer (Embedded)
+      description: |
+        Raspberry Pi/Tinkerboard project aiming at producing a portable device to stream video-data from up to 4 cameras transmitted over DVB-T (different frequencies) to save them on local drives / remote servers.
+      tags:
+        - embedded
+        - raspberry-pi
+        - tinkerboard
+        - dvb-t
+        - ffmpeg
+
+- company: i-EXP
+  link: https://i-exp.ru
+  position: Android Developer
+  period: 09/2017 - 03/2018
+  projects:
+    - title: Maquette Controller
+      description: |
+        Application for controlling physical maquette of a location
+        - worked with UART and Bluetooth
+        - control each object on maquette (lights, elevator & etc)
+        - support different maquettes
+        - presentation mode, automatic execution of sequence of actions
+      tags:
+        - android
+        - rxjava
+        - uart
+        - bluetooth
+
+    - title: Videowall Controller
+      description: |
+        Application for controlling custom video display with unspecified amount of panels (3-9)
+        - multithread image output of images to display
+        - control data displayed on each panel
+        - ability to move data between panels
+        - presentation mode
+      tags:
+        - android
+        - rxjava
+        - exoplayer
+        - streaming
+
+    - title: Application for AR Streaming
+      description: |
+        - device location-data processing
+        - appending virtual objects to real video obtained from device
+        - occlusion task resolved - transmit video data in aRGB formal
+        - transformation of coordination system from ARCore into Unity
+        - obtained minimal possible streaming latency
+        Used libraries: Tango, ARCore and Vuforia SDK
+      tags:
+        - android
+        - tango
+        - augmented-reality
+        - virtual-reality
+        - streaming
+

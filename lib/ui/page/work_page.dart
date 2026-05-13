@@ -22,16 +22,13 @@ class WorkPage extends StatelessComponent {
   }
 
   Component _workItem(Work work) {
-    final startForm = '${work.start?.month.toString().padLeft(2, '0')}/${work.start?.year}';
-    final isPres = work.end == null || (work.end!.year == DateTime.now().year && work.end!.month == DateTime.now().month);
-    final endForm = isPres ? 'Present' : '${work.end!.month.toString().padLeft(2, '0')}/${work.end!.year}';
-    
     return div(classes: 'card', [
       h3(classes: 'text-title', [
         work.link != null ? a(href: work.link!, attributes: const {'target': '_blank'}, [Component.text(work.company)]) : Component.text(work.company)
       ]),
       p(classes: 'text-main mb-sm', [Component.text(work.position)]),
-      p(classes: 'text-caption mb-md', [Component.text('$startForm - $endForm')]),
+      if (work.period != null)
+        p(classes: 'text-caption mb-md', [Component.text(work.period!)]),
       ...work.projects.map(_projectItem),
     ]);
   }
