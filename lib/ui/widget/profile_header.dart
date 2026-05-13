@@ -16,17 +16,61 @@ class ProfileHeader extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     return div(classes: 'profile-header', [
+      // Theme toggle
       button(
         classes: 'theme-toggle',
         onClick: toggleTheme,
-        const [i(classes: 'fas fa-moon', [])]
+        const [i(classes: 'fas fa-adjust', [])],
       ),
-      div(classes: 'text-center', [
-        h1(classes: 'mb-sm', [Component.text(data.name)]),
-        // h3(classes: 'text-caption mb-sm', [Component.text(data.nickname)]),
-        h3(classes: 'text-caption mb-md', [Component.text(data.jobTitle)]),
-        SocialNetworks(links: data.networkLinks),
-      ])
+
+      // Avatar
+      img(
+        classes: 'profile-avatar',
+        src: data.photo,
+        attributes: const {'alt': 'Profile photo', 'loading': 'lazy'},
+      ),
+
+      // Name
+      h1(classes: 'profile-name', [Component.text(data.name)]),
+
+      // Title
+      p(classes: 'profile-title', [Component.text(data.jobTitle)]),
+
+      // Location
+      p(classes: 'profile-location', [
+        const i(classes: 'fas fa-map-marker-alt', []),
+        Component.text(data.location),
+      ]),
+
+      // Bio
+      p(classes: 'profile-bio', [Component.text(data.bio)]),
+
+      // Social links
+      SocialNetworks(links: data.networkLinks),
+
+      // Skills
+      if (data.skills.isNotEmpty)
+        div(classes: 'profile-section', [
+          p(classes: 'profile-section-title', [const Component.text('Skills')]),
+          div(classes: 'skills-list', [
+            for (final skill in data.skills)
+              span(classes: 'skill-tag', [Component.text(skill)]),
+          ]),
+        ]),
+
+      // Languages
+      if (data.languages.isNotEmpty)
+        div(classes: 'profile-section', [
+          p(classes: 'profile-section-title', [const Component.text('Languages')]),
+          div(classes: 'languages-list', [
+            for (final lang in data.languages)
+              span(classes: 'language-item', [
+                span(classes: 'language-name', [Component.text(lang.language)]),
+                span(classes: 'language-sep', [const Component.text('·')]),
+                Component.text(lang.level),
+              ]),
+          ]),
+        ]),
     ]);
   }
 }

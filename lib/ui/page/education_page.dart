@@ -9,12 +9,18 @@ class EducationPage extends StatelessComponent {
   const EducationPage({required this.data, super.key});
 
   Component _educationItem(Education education) => div(classes: 'card', [
-        h3(classes: 'text-title', [Component.text(education.place)]),
-        p(classes: 'text-main mb-sm', [Component.text(education.occupation)]),
-        if (education.location != null)
-          p(classes: 'text-caption', [Component.text(education.location!)]),
-        if (education.period != null)
-          p(classes: 'text-caption mb-md', [Component.text(education.period!)]),
+        div(classes: 'card-header', [
+          div([
+            h3(classes: 'text-title', [Component.text(education.place)]),
+            p(classes: 'text-subtitle', [Component.text(education.occupation)]),
+            if (education.location != null)
+              p(classes: 'text-caption', [Component.text(education.location!)]),
+          ]),
+          if (education.period != null)
+            div(classes: 'card-meta', [
+              p(classes: 'text-caption', [Component.text(education.period!)]),
+            ]),
+        ]),
         if (education.description != null)
           p(classes: 'text-body', [Component.text(education.description!)]),
       ]);

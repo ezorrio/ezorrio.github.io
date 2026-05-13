@@ -10,18 +10,26 @@ class WorkPage extends StatelessComponent {
 
   Component _workItem(Work work) {
     return div(classes: 'card', [
-      h3(classes: 'text-title', [
-        work.link != null
-            ? a(href: work.link!, attributes: const {'target': '_blank'}, [Component.text(work.company)])
-            : Component.text(work.company),
+      div(classes: 'card-header', [
+        div([
+          h3(classes: 'text-title', [
+            work.link != null
+                ? a(href: work.link!, attributes: const {'target': '_blank'}, [Component.text(work.company)])
+                : Component.text(work.company),
+          ]),
+          p(classes: 'text-subtitle', [Component.text(work.position)]),
+          if (work.location != null)
+            p(classes: 'text-caption', [
+              Component.text(work.location!),
+            ]),
+        ]),
+        if (work.period != null)
+          div(classes: 'card-meta', [
+            p(classes: 'text-caption', [Component.text(work.period!)]),
+          ]),
       ]),
-      p(classes: 'text-main mb-sm', [Component.text(work.position)]),
-      if (work.location != null)
-        p(classes: 'text-caption', [Component.text(work.location!)]),
-      if (work.period != null)
-        p(classes: 'text-caption mb-md', [Component.text(work.period!)]),
       if (work.description != null)
-        p(classes: 'text-body mb-sm', [Component.text(work.description!)]),
+        p(classes: 'text-body', [Component.text(work.description!)]),
       if (work.tags.isNotEmpty)
         div(classes: 'tags', [
           for (final tag in work.tags) span(classes: 'tag', [Component.text(tag)]),
