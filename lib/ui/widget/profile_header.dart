@@ -20,7 +20,7 @@ class ProfileHeader extends StatelessComponent {
       button(
         classes: 'theme-toggle',
         onClick: toggleTheme,
-        const [i(classes: 'fas fa-adjust', [])],
+        const [i(classes: 'fas fa-terminal', [])],
       ),
 
       // Avatar
@@ -30,11 +30,16 @@ class ProfileHeader extends StatelessComponent {
         attributes: const {'alt': 'Profile photo', 'loading': 'lazy'},
       ),
 
-      // Name
-      h1(classes: 'profile-name', [Component.text(data.name)]),
+      // Name with blinking cursor
+      h1(classes: 'profile-name', [
+        Component.text(data.name),
+        const span(classes: 'cursor', [Component.text('_')]),
+      ]),
 
-      // Title
-      p(classes: 'profile-title', [Component.text(data.jobTitle)]),
+      // Title as code comment
+      p(classes: 'profile-title mono', [
+        Component.text('// ${data.jobTitle}'),
+      ]),
 
       // Location
       p(classes: 'profile-location', [
@@ -51,7 +56,7 @@ class ProfileHeader extends StatelessComponent {
       // Skills
       if (data.skills.isNotEmpty)
         div(classes: 'profile-section', [
-          p(classes: 'profile-section-title', [const Component.text('Skills')]),
+          p(classes: 'profile-section-title', [const Component.text('{ skills }')]),
           div(classes: 'skills-list', [
             for (final skill in data.skills)
               span(classes: 'skill-tag', [Component.text(skill)]),
@@ -61,7 +66,7 @@ class ProfileHeader extends StatelessComponent {
       // Languages
       if (data.languages.isNotEmpty)
         div(classes: 'profile-section', [
-          p(classes: 'profile-section-title', [const Component.text('Languages')]),
+          p(classes: 'profile-section-title', [const Component.text('{ languages }')]),
           div(classes: 'languages-list', [
             for (final lang in data.languages)
               span(classes: 'language-item', [
