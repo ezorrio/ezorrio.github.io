@@ -56,8 +56,8 @@ class _MainPageState extends State<MainPage> {
           component.child,
         ]),
         // Footer
-        footer(classes: 'site-footer', [
-          const p(classes: 'footer-text', [
+        const footer(classes: 'site-footer', [
+          p(classes: 'footer-text', [
             Component.text('Built with '),
             span(classes: 'mono accent', [Component.text('Dart')]),
             Component.text(' & '),

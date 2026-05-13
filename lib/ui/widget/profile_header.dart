@@ -17,11 +17,9 @@ class ProfileHeader extends StatelessComponent {
   Component build(BuildContext context) {
     return div(classes: 'profile-header', [
       // Theme toggle
-      button(
-        classes: 'theme-toggle',
-        onClick: toggleTheme,
-        const [i(classes: 'fas fa-terminal', [])],
-      ),
+      button(classes: 'theme-toggle', onClick: toggleTheme, const [
+        i(classes: 'fas fa-terminal', []),
+      ]),
 
       // Avatar
       img(
@@ -37,9 +35,7 @@ class ProfileHeader extends StatelessComponent {
       ]),
 
       // Title as code comment
-      p(classes: 'profile-title mono', [
-        Component.text('// ${data.jobTitle}'),
-      ]),
+      p(classes: 'profile-title mono', [Component.text('// ${data.jobTitle}')]),
 
       // Location
       p(classes: 'profile-location', [
@@ -56,7 +52,9 @@ class ProfileHeader extends StatelessComponent {
       // Skills
       if (data.skills.isNotEmpty)
         div(classes: 'profile-section', [
-          p(classes: 'profile-section-title', [const Component.text('{ skills }')]),
+          const p(classes: 'profile-section-title', [
+            Component.text('{ skills }'),
+          ]),
           div(classes: 'skills-list', [
             for (final skill in data.skills)
               span(classes: 'skill-tag', [Component.text(skill)]),
@@ -66,12 +64,14 @@ class ProfileHeader extends StatelessComponent {
       // Languages
       if (data.languages.isNotEmpty)
         div(classes: 'profile-section', [
-          p(classes: 'profile-section-title', [const Component.text('{ languages }')]),
+          const p(classes: 'profile-section-title', [
+            Component.text('{ languages }'),
+          ]),
           div(classes: 'languages-list', [
             for (final lang in data.languages)
               span(classes: 'language-item', [
                 span(classes: 'language-name', [Component.text(lang.language)]),
-                span(classes: 'language-sep', [const Component.text('·')]),
+                const span(classes: 'language-sep', [Component.text('·')]),
                 Component.text(lang.level),
               ]),
           ]),
