@@ -6,6 +6,7 @@ class Work {
   String? period;
   String? description;
   List<String> tags;
+  List<String> screenshots;
 
   Work({
     required this.company,
@@ -15,5 +16,6 @@ class Work {
     this.link,
     this.period,
     this.description,
+    this.screenshots = const [],
   });
 }

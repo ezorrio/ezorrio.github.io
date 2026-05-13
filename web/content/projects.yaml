@@ -1,3 +1,28 @@
+- title: zen/do
+  role: Co-founder, Developer
+  description: |
+    A physical distraction-free timer device built to help you stay focused on what matters.
+    - Hardware device powered by ESP32 with a UI built using LVGL
+    - Firmware written in C for minimal latency and low power consumption
+    - Companion app (iOS, macOS, Android) built with Flutter, connecting to the device via BLE using a nanopb-based protocol
+    - Multiple focus modes: Pomodoro, countdown timer, or open-ended time tracking
+    - Organize work into focus projects with custom preferences
+    - Companion dashboard with insights into how you spend your time
+  screenshots:
+    - content/zen-do.jpg
+  tags:
+    - esp32
+    - c
+    - lvgl
+    - embedded
+    - ble
+    - nanopb
+    - flutter
+    - dart
+    - ios
+    - macos
+    - android
+
 - title: Phoenix Dev Team
   role: Co-founder, Android Developer
   description: |
@@ -9,6 +34,8 @@
     - Open-sourced the project in 2019 [github.com/PhoenixDevTeam/Phoenix-for-VK], having ~150 stars
   link: https://github.com/PhoenixDevTeam/Phoenix-for-VK
   period: May 2014 - January 2019
+  screenshots:
+    - https://github.com/PhoenixDevTeam/Phoenix-for-VK/blob/5.x/Screenshots.jpg?raw=true
   tags:
     - android
     - java

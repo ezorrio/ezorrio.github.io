@@ -2,6 +2,7 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/dom.dart';
 import 'package:ezorrio_dev/model/work.dart';
 import 'package:ezorrio_dev/resource/data_repository.dart';
+import 'package:ezorrio_dev/ui/widget/screenshot_carousel.dart';
 
 class WorkPage extends StatelessComponent {
   final DataRepository data;
@@ -14,7 +15,11 @@ class WorkPage extends StatelessComponent {
         div([
           h3(classes: 'text-title', [
             work.link != null
-                ? a(href: work.link!, attributes: const {'target': '_blank'}, [Component.text(work.company)])
+                ? a(href: work.link!, attributes: const {'target': '_blank'}, [
+                    Component.text(work.company),
+                    Component.text(' '),
+                    i(classes: 'fas fa-arrow-up-right-from-square link-icon', []),
+                  ])
                 : Component.text(work.company),
           ]),
           p(classes: 'text-subtitle', [Component.text(work.position)]),
@@ -30,6 +35,8 @@ class WorkPage extends StatelessComponent {
       ]),
       if (work.description != null)
         p(classes: 'text-body', [Component.text(work.description!)]),
+      if (work.screenshots.isNotEmpty)
+        ScreenshotCarousel(screenshots: work.screenshots),
       if (work.tags.isNotEmpty)
         div(classes: 'tags', [
           for (final tag in work.tags) span(classes: 'tag', [Component.text(tag)]),

@@ -1,16 +1,21 @@
 - company: Coop Norge SA
   location: Oslo, Norway
-  link: https://coop.no
+  link: https://apps.apple.com/no/app/coop-medlem/id992134528
   position: Lead for Mobile App Development
   period: December 2022 - Present
   description: |
-    - Initiated and led the project of creating new Coop Medlem app with 1.6M+ Monthly Active Users (80% up since)
+    - Initiated and led the project of creating new Coop Member app with 2M+ Monthly Active Users (80% up since) - Top 50 of all apps in Norway, Top 5 in Shopping category
     - Defined project architecture, coding standards, definitions of done, SLO's, review and delivery processes (resulted in faster delivery time, archived required 99.99% crash-free production users)
     - Provided technical solutions to business-critical services and foundation of the app
     - Mentored mobile developers in the team and organization wide, established Mobile Devs chapter across the organization
     - Actively developed, tackling and solving important business cases (coded in Flutter, Dart, Swift, Kotlin, Github Actions, Ruby, Shell) - tested, reviewed and delivered solutions on time.
     - Maintained production and actively addressed all severe technical issues
     - Overhauled continuous integration (CI) and continuous delivery pipelines as a part of testing and delivery processes, resulting in 20+ rollouts per year per platform
+  screenshots:
+    - https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/c2/46/2b/c2462bf9-8e7b-b8cc-ef78-f12e9534c0e5/56bcd223-3b32-4fd8-be20-cefbe3828d16_1_Skann_medlemskort.png/460x998bb.webp
+    - https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/98/7a/25/987a25cb-e782-d3a7-9d80-013abad2ecf3/2d0df950-52fd-450e-a06d-3faf125002b4_4_MKA.png/460x998bb.webp
+    - https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/df/bc/67/dfbc67ff-f4ed-34a3-cbf0-1c20aa55fa84/f142b1ed-8c62-4e29-94d4-2b66269f15b0_5_Kvitteringer.png/460x998bb.webp
+    - https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/9e/fb/f9/9efbf922-1afb-c421-e242-1ca2abebf695/b014c172-9794-4278-ada7-f9657bf16550_8_Meny.png/460x998bb.webp
   tags:
     - flutter
     - dart

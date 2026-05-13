@@ -91,6 +91,7 @@ class DataRepository {
     final list = yaml as YamlList;
     return list.map((item) {
       final tags = item['tags'] as YamlList?;
+      final screenshots = item['screenshots'] as YamlList?;
       return Project(
         title: item['title'] as String,
         description: (item['description'] as String).trim(),
@@ -98,6 +99,7 @@ class DataRepository {
         link: item['link'] as String?,
         tags: tags?.map((e) => e.toString()).toList() ?? [],
         period: item['period'] as String?,
+        screenshots: screenshots?.map((e) => e.toString()).toList() ?? [],
       );
     }).toList();
   }
@@ -106,6 +108,7 @@ class DataRepository {
     final list = yaml as YamlList;
     return list.map((item) {
       final tags = item['tags'] as YamlList?;
+      final screenshots = item['screenshots'] as YamlList?;
       return Work(
         company: item['company'] as String,
         position: item['position'] as String,
@@ -114,6 +117,7 @@ class DataRepository {
         period: item['period'] as String?,
         description: (item['description'] as String?)?.trim(),
         tags: tags?.map((e) => e.toString()).toList() ?? [],
+        screenshots: screenshots?.map((e) => e.toString()).toList() ?? [],
       );
     }).toList();
   }

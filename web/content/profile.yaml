@@ -15,7 +15,7 @@ networkLinks:
 skills:
   - Flutter
   - Dart
-  - Android SDK
+  - Android
   - Java
   - Kotlin
   - Firebase
@@ -39,7 +39,11 @@ skills:
 languages:
   - language: English
     level: Advanced
+  - language: Russian
+    level: Advanced
   - language: Azerbaijani
     level: Professional
   - language: Turkish
     level: Professional
+  - language: Norwegian (Bokmål)
+    level: Intermediate

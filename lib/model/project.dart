@@ -5,6 +5,7 @@ class Project {
   String? period;
   String? link;
   List<String> tags;
+  List<String> screenshots;
 
   Project({
     required this.title,
@@ -13,5 +14,6 @@ class Project {
     this.role,
     this.link,
     this.period,
+    this.screenshots = const [],
   });
 }

@@ -419,12 +419,24 @@ final List<StyleRule> appStyles = [
   }),
   css('.text-title a').styles(raw: const {
     'color': 'var(--accent)',
-    'text-decoration': 'none',
-    'transition': 'color var(--transition)',
+    'text-decoration': 'underline',
+    'text-decoration-style': 'dotted',
+    'text-underline-offset': '3px',
+    'text-decoration-thickness': '1.5px',
+    'transition': 'color var(--transition), text-decoration var(--transition)',
   }),
   css('.text-title a:hover').styles(raw: const {
     'color': 'var(--accent-light)',
-    'text-decoration': 'underline',
+    'text-decoration-style': 'solid',
+  }),
+  css('.link-icon').styles(raw: const {
+    'font-size': '0.65em',
+    'opacity': '0.6',
+    'vertical-align': 'super',
+    'transition': 'opacity var(--transition)',
+  }),
+  css('.text-title a:hover .link-icon').styles(raw: const {
+    'opacity': '1',
   }),
   css('.text-subtitle').styles(raw: const {
     'font-size': '0.92rem',
@@ -536,6 +548,43 @@ final List<StyleRule> appStyles = [
     'color': 'var(--text-tertiary)',
     'font-family': "'JetBrains Mono', 'Fira Code', monospace",
     'letter-spacing': '0.02em',
+  }),
+
+  // ═══════════════════════════════════════
+  //  SCREENSHOTS
+  // ═══════════════════════════════════════
+  css('.screenshots').styles(raw: const {
+    'display': 'flex',
+    'gap': '12px',
+    'margin-top': '16px',
+    'overflow-x': 'auto',
+    'scroll-snap-type': 'x mandatory',
+    '-webkit-overflow-scrolling': 'touch',
+    'padding-bottom': '8px',
+  }),
+  css('.screenshots::-webkit-scrollbar').styles(raw: const {
+    'height': '6px',
+  }),
+  css('.screenshots::-webkit-scrollbar-track').styles(raw: const {
+    'background': 'transparent',
+  }),
+  css('.screenshots::-webkit-scrollbar-thumb').styles(raw: const {
+    'background': 'var(--border)',
+    'border-radius': 'var(--radius-full)',
+  }),
+  css('.screenshots::-webkit-scrollbar-thumb:hover').styles(raw: const {
+    'background': 'var(--text-tertiary)',
+  }),
+  css('.screenshot-image').styles(raw: const {
+    'flex-shrink': '0',
+    'height': '400px',
+    'border-radius': 'var(--radius-sm)',
+    'object-fit': 'cover',
+    'scroll-snap-align': 'start',
+  }),
+  css('.screenshots--single .screenshot-image').styles(raw: const {
+    'height': 'auto',
+    'max-width': '100%',
   }),
 
   // ═══════════════════════════════════════
